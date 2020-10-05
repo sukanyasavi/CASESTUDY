@@ -34,13 +34,10 @@ public class CRDUOperations
 			pt.setString(5,x.getDate_Of_Birth());
 			 result = pt.executeUpdate();
 		}
-		catch(SQLException e)
-		{
-			System.out.println(e);
-		}
+		
 		catch(NullPointerException e)
 		{
-			System.out.println("some problem");
+			e.printStackTrace();
 		}
 		
 		//closing connection and statement in finally block
@@ -67,7 +64,7 @@ public class CRDUOperations
 	}
 	
 	//This method is used fetch employee details 
-	public void readEmployee(EmployeePojo x) throws SQLException
+	public boolean readEmployee(EmployeePojo x) throws SQLException
 	{
 		Statement stmt=null;
 		Connection con=null;
@@ -99,11 +96,12 @@ public class CRDUOperations
 					System.out.println("employee with given id not found");
 				}
 				}
-		catch(SQLException e)
+		catch(NullPointerException e)
 		{
 			e.printStackTrace();
 		}
-		finally
+
+				finally
 		{
 		try
 		{
@@ -120,6 +118,7 @@ public class CRDUOperations
 		e.printStackTrace();
 		}
 	    }
+		return true;
 }	
 	
 	//This method is used to update employee details 
@@ -143,11 +142,12 @@ public class CRDUOperations
 			stmt.setString(5,x.getDate_Of_Birth());
 		    result = stmt.executeUpdate();
 		} 
-		catch(SQLException e)
+		
+		catch(NullPointerException e)
 		{
 			e.printStackTrace();
 		}
-		
+
 		finally 
 		{
 			try 
@@ -184,11 +184,12 @@ public class CRDUOperations
 			 stmt.setInt(1, x.getEmployee_Id());
 		     result = stmt.executeUpdate();
 		} 
-		catch(SQLException e)
+		catch(NullPointerException e)
 		{
-			e.printStackTrace();
+			System.out.println("some problem");
 		}
-		finally
+
+				finally
 		{
 			try 
 			{

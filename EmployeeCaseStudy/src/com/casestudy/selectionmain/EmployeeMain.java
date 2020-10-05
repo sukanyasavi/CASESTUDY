@@ -90,7 +90,7 @@ public class EmployeeMain
 			case 4:
 			{
 			       
-				   System.out.println("Enter Emp_Id to Delete employee");
+				  System.out.println("Enter Emp_Id to Delete employee");
 			       ep.setEmployee_Id(sc.nextInt());
 			       int val = co.deleteEmp(ep);
 		           if(val==0)
